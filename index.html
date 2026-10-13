@@ -9,8 +9,8 @@
     :root {
       --pink: #f2a1b5;
       --coral: #ef927e;
-      --cream: #fff5e7
-      --brown: #18f684c;
+      --cream: #fff5e7;
+      --brown: #8f684c;
     }
 
     * {
@@ -82,6 +82,17 @@
       border-radius: 48% 48% 8% 8%;
       background: transparent;
     }
+
+    .page-hotspot {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+    
 
     .heart-hotspot:focus-visible,
     .action:focus-visible {
@@ -233,8 +244,13 @@
 <body> 
   <h1>Happy Birthday!</h1>
   <p>A little suprise is waiting for you...</p>
+  <!-- PAGE 1- COVER-->
   <section class="scene active" id="cover">
-    <img src="cover.png" alt="Birthday cover">
+    <img 
+      src="cover.png" 
+      alt="Birthday cover"
+      class="art"
+    >
     
     <button
       class="heart-hotspot"
@@ -245,8 +261,42 @@
     <div class="hint">♡ tap the heart to open ♡</div>
   </section>
 
-  <section class="scene" id="inside">
-    <img src="inside.png" alt="Inside of birthday card">
-  </section>
+  
+<!-- PAGE 2 INSIDE-->
+<section class="scene" id="inside">
+  <img 
+    src="inside.png" 
+    alt="Inside of birthday card" 
+    class="art"
+  >
+  
+  <button
+    class="pagehotspot"
+    id="openEnvelope"
+    aria-label="Continue to the letter"
+  ></button>
+  
+  <div class="hint"> ♡ tap to continue ♡ </div>
+    
+</section>
+
+<script>
+  // Switch between the card pages
+  function showScene(id) {
+    document.querySelectorAll(".scene").forEach(scene => {
+      scene.class.toggle("active", scene.id === id);
+    });
+
+    // click the heart to open the card
+    document.getElementById("openCard").addEventListener("click", () => {
+      showScene("inside")
+    });
+
+    // Click the inside page to continue
+    document.getElementById("openEnvelope").addEventListener("click", () => {
+      alert("Your next page will be the envelope!");
+    });
+    
+</script>
 </body>
 </html>
