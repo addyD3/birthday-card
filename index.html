@@ -244,6 +244,8 @@
 <body> 
   <h1>Happy Birthday!</h1>
   <p>A little suprise is waiting for you...</p>
+  
+  <main class="card" id="card">
   <!-- PAGE 1- COVER-->
   <section class="scene active" id="cover">
     <img 
@@ -271,7 +273,7 @@
   >
   
   <button
-    class="pagehotspot"
+    class="page-hotspot"
     id="openEnvelope"
     aria-label="Continue to the letter"
   ></button>
@@ -279,24 +281,26 @@
   <div class="hint"> ♡ tap to continue ♡ </div>
     
 </section>
-
+  </main>
+  
 <script>
   // Switch between the card pages
   function showScene(id) {
     document.querySelectorAll(".scene").forEach(scene => {
-      scene.class.toggle("active", scene.id === id);
+      scene.classList.toggle("active", scene.id === id);
     });
+  }
 
-    // click the heart to open the card
-    document.getElementById("openCard").addEventListener("click", () => {
-      showScene("inside")
-    });
+  // Click the heart to open the card
+  document.getElementById("openCard").addEventListener("click", () => {
+    showScene("inside");
+  });
 
-    // Click the inside page to continue
-    document.getElementById("openEnvelope").addEventListener("click", () => {
-      alert("Your next page will be the envelope!");
-    });
-    
+  // Click the inside page to continue
+  document.getElementById("openEnvelope").addEventListener("click", () => {
+    alert("Your next page will be the envelope!");
+  });
 </script>
+  
 </body>
 </html>
